@@ -1,5 +1,6 @@
 package com.rickvoermans.microservices.users.api;
 
+import com.rickvoermans.microservices.users.api.exceptions.ExistingUserException;
 import com.rickvoermans.microservices.users.api.models.User;
 import com.rickvoermans.microservices.users.api.models.UserDto;
 import com.rickvoermans.microservices.users.api.repository.UserRepository;
@@ -27,6 +28,8 @@ public class UserController {
             user.setPassword(userDto.getPassword());
 
             userRepository.save(user);
+        } else {
+            throw new ExistingUserException("Username: " + userDto.getUsername() + " already exists");
         }
     }
 
