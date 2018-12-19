@@ -1,4 +1,4 @@
-package com.rickvoermans.microservices.users.api.errors;
+package com.rickvoermans.microservices.users.api.models;
 
 import java.time.LocalDate;
 

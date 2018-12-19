@@ -1,6 +1,8 @@
 package com.rickvoermans.microservices.users.api.errors;
 
 import com.rickvoermans.microservices.users.api.errors.exceptions.ExistingUserException;
+import com.rickvoermans.microservices.users.api.models.ErrorResponse;
+import com.rickvoermans.microservices.users.api.models.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,13 +18,15 @@ import java.time.LocalDate;
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     private ErrorResponse errorResponse;
+    private Response response;
 
     /* USER ALREADY EXISTS ERROR */
     @ExceptionHandler(ExistingUserException.class)
-    public final ResponseEntity<ErrorResponse> handleExistingUserException(ExistingUserException exception, WebRequest request) {
+    public final Response handleExistingUserException(ExistingUserException exception, WebRequest request) {
         errorResponse = new ErrorResponse(LocalDate.now(), HttpStatus.CONFLICT.value(), exception.getMessage(), request.getDescription(false));
+        response = new Response(LocalDate.now(), HttpStatus.CONFLICT.value(), HttpStatus.CONFLICT.toString(), errorResponse);
 
-        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+        return response;
     }
 
     /* DEFAULT ERROR (400) */
