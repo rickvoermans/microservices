@@ -23,7 +23,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     /* USER ALREADY EXISTS ERROR */
     @ExceptionHandler(ExistingUserException.class)
     public final Response handleExistingUserException(ExistingUserException exception, WebRequest request) {
-        errorResponse = new ErrorResponse(LocalDate.now(), HttpStatus.CONFLICT.value(), exception.getMessage(), request.getDescription(false));
+        errorResponse = new ErrorResponse(exception.getMessage(), request.getDescription(false));
         response = new Response(LocalDate.now(), HttpStatus.CONFLICT.value(), HttpStatus.CONFLICT.toString(), errorResponse);
 
         return response;
@@ -32,7 +32,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     /* DEFAULT ERROR (400) */
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorResponse> handleGeneralException(Exception exception, WebRequest request) {
-        errorResponse = new ErrorResponse(LocalDate.now(), HttpStatus.BAD_REQUEST.value(), exception.getMessage(), request.getDescription(false));
+        errorResponse = new ErrorResponse(exception.getMessage(), request.getDescription(false));
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }

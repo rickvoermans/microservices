@@ -1,38 +1,14 @@
 package com.rickvoermans.microservices.users.api.models;
 
-import java.time.LocalDate;
-
 public class ErrorResponse {
-
-    private LocalDate timestamp;
-
-    private int statusCode;
 
     private String errorMessage;
     private String errorDetails;
 
-    public ErrorResponse(LocalDate timestamp, int statusCode, String errorMessage, String errorDetails) {
+    public ErrorResponse(String errorMessage, String errorDetails) {
         super();
-        this.timestamp = timestamp;
-        this.statusCode = statusCode;
         this.errorMessage = errorMessage;
         this.errorDetails = errorDetails;
-    }
-
-    public LocalDate getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(LocalDate timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
     }
 
     public String getErrorMessage() {
