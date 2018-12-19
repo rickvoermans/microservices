@@ -1,6 +1,6 @@
 package com.rickvoermans.microservices.users.api;
 
-import com.rickvoermans.microservices.users.api.exceptions.ExistingUserException;
+import com.rickvoermans.microservices.users.api.errors.exceptions.ExistingUserException;
 import com.rickvoermans.microservices.users.api.models.User;
 import com.rickvoermans.microservices.users.api.models.UserDto;
 import com.rickvoermans.microservices.users.api.repository.UserRepository;
