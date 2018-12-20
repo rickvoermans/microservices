@@ -3,7 +3,7 @@ package com.rickvoermans.microservices.games.api.models;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "games")
@@ -21,7 +21,7 @@ public class Game {
     private String description;
 
     @Column(name = "genres")
-    private List<String> genres;
+    private ArrayList<String> genres;
 
     @Column(name = "minimum_age")
     private Integer minimumAge;
@@ -35,7 +35,7 @@ public class Game {
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "company")
+    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL, mappedBy = "game")
     private Company company;
 
     public Game() {
@@ -66,11 +66,11 @@ public class Game {
         this.description = description;
     }
 
-    public List<String> getGenres() {
+    public ArrayList<String> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<String> genres) {
+    public void setGenres(ArrayList<String> genres) {
         this.genres = genres;
     }
 

@@ -2,7 +2,7 @@ package com.rickvoermans.microservices.games.api.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "companies")
@@ -20,10 +20,13 @@ public class Company {
     private LocalDate founded;
 
     @Column(name = "developed")
-    private List<String> developed;
+    private ArrayList<String> developed;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "game_id", nullable = false)
+    private Game game;
 
     public Company() {
-
     }
 
     public Long getId() {
@@ -50,11 +53,19 @@ public class Company {
         this.founded = founded;
     }
 
-    public List<String> getDeveloped() {
+    public ArrayList<String> getDeveloped() {
         return developed;
     }
 
-    public void setDeveloped(List<String> developed) {
+    public void setDeveloped(ArrayList<String> developed) {
         this.developed = developed;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

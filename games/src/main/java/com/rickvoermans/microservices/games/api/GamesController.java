@@ -10,11 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "games")
+@RequestMapping(path = "games")
 public class GamesController {
 
-    @Autowired
     private GameRepository gameRepository;
+
+    @Autowired
+    public GamesController(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
 
     @GetMapping
     public List<Game> getGames() {
