@@ -1,4 +1,4 @@
-package com.rickvoermans.microservices.users.api.models;
+package com.rickvoermans.microservices.users.api.models.data_transfer_objects;
 
 public class GameDto {
 

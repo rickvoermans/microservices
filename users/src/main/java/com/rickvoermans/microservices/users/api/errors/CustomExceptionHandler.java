@@ -3,6 +3,7 @@ package com.rickvoermans.microservices.users.api.errors;
 import com.rickvoermans.microservices.users.api.errors.exceptions.ExistingUserException;
 import com.rickvoermans.microservices.users.api.models.ErrorResponse;
 import com.rickvoermans.microservices.users.api.models.Response;
+import com.rickvoermans.microservices.users.api.models.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,7 +25,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ExistingUserException.class)
     public final Response handleExistingUserException(ExistingUserException exception, WebRequest request) {
         errorResponse = new ErrorResponse(exception.getMessage(), request.getDescription(false));
-        response = new Response(LocalDate.now(), HttpStatus.CONFLICT.value(), HttpStatus.CONFLICT.toString(), errorResponse);
+        response = new Response<>(LocalDate.now(), HttpStatus.CONFLICT.value(), HttpStatus.CONFLICT.toString(), errorResponse);
 
         return response;
     }
