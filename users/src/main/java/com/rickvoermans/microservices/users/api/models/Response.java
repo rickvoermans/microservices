@@ -1,7 +1,10 @@
 package com.rickvoermans.microservices.users.api.models;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.time.LocalDate;
 
+@ResponseBody
 public class Response<T> {
 
     private LocalDate timestamp;

@@ -1,8 +1,6 @@
 package com.rickvoermans.microservices.users.api.repository;
 
-import com.rickvoermans.microservices.users.api.UserController;
 import com.rickvoermans.microservices.users.api.models.User;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

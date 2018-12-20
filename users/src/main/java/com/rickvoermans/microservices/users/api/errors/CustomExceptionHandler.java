@@ -3,9 +3,7 @@ package com.rickvoermans.microservices.users.api.errors;
 import com.rickvoermans.microservices.users.api.errors.exceptions.ExistingUserException;
 import com.rickvoermans.microservices.users.api.models.ErrorResponse;
 import com.rickvoermans.microservices.users.api.models.Response;
-import com.rickvoermans.microservices.users.api.models.User;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,10 +30,11 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     /* DEFAULT ERROR (400) */
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ErrorResponse> handleGeneralException(Exception exception, WebRequest request) {
+    public final Response handleGeneralException(Exception exception, WebRequest request) {
         errorResponse = new ErrorResponse(exception.getMessage(), request.getDescription(false));
+        response = new Response<>(LocalDate.now(), HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.toString(), errorResponse);
 
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return response;
     }
 
 }
