@@ -12,4 +12,4 @@ Logout function <br/>
 
 
 ## Databases
-Scripts for the databases can be found [here](https://google.com)
+Scripts for the databases can be found [here](scripts)
