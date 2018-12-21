@@ -1,11 +1,23 @@
 package com.rickvoermans.microservices.users.api.models.data_transfer_objects;
 
+import java.time.LocalDate;
+
 public class GameDto {
+
+    private LocalDate dateAdded;
 
     private Long userId;
     private Long gameId;
 
     private String game;
+
+    public LocalDate getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(LocalDate dateAdded) {
+        this.dateAdded = dateAdded;
+    }
 
     public Long getUserId() {
         return userId;

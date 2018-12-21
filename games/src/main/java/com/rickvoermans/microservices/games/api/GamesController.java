@@ -35,6 +35,11 @@ public class GamesController {
         return gameRepository.findById(id).orElseThrow(IllegalAccessError::new);
     }
 
+    @GetMapping(path = "/{title}")
+    public Game getGameByName(@PathVariable("title") String title) {
+        return gameRepository.findByTitle(title).orElseThrow(IllegalAccessError::new);
+    }
+
     @PostMapping("/add")
     public Game addGame(@RequestBody GameDto gameDto) throws Exception {
         boolean existingGame = gameRepository.findByTitle(gameDto.getTitle()).isPresent();
