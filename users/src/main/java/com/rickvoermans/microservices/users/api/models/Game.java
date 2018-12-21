@@ -11,14 +11,21 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "game_id")
     private Long gameId;
 
+    @Column(name = "game")
     private String game;
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private LocalDate date;
+
+    public Game() {
+
+    }
 
     public Long getId() {
         return id;
