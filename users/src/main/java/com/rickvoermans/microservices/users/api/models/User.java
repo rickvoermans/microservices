@@ -22,6 +22,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    // Hibernate requires empty constructor
     public User() {}
 
     public Long getId() {
