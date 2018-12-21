@@ -1,13 +1,14 @@
 package com.rickvoermans.microservices.games.api.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "games")
-public class Game {
+public class Game implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,8 +21,8 @@ public class Game {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "genres")
-    private ArrayList<String> genres;
+//    @Column(name = "genres")
+//    private ArrayList<String> genres;
 
     @Column(name = "minimum_age")
     private Integer minimumAge;
@@ -35,8 +36,8 @@ public class Game {
     @Column(name = "price")
     private BigDecimal price;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL, mappedBy = "game")
-    private Company company;
+    //@OneToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL, mappedBy = "game")
+    //private Company company;
 
     public Game() {
 
@@ -66,13 +67,13 @@ public class Game {
         this.description = description;
     }
 
-    public ArrayList<String> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(ArrayList<String> genres) {
-        this.genres = genres;
-    }
+//    public ArrayList<String> getGenres() {
+//        return genres;
+//    }
+//
+//    public void setGenres(ArrayList<String> genres) {
+//        this.genres = genres;
+//    }
 
     public Integer getMinimumAge() {
         return minimumAge;
@@ -106,11 +107,11 @@ public class Game {
         this.price = price;
     }
 
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
+//    public Company getCompany() {
+//        return company;
+//    }
+//
+//    public void setCompany(Company company) {
+//        this.company = company;
+//    }
 }

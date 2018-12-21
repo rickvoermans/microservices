@@ -51,17 +51,17 @@ public class GamesController {
             game.setPrice(gameDto.getPrice());
 
             // create company
-            ArrayList<String> games = new ArrayList<>();
-            games.add("csgo");
-            games.add("team fortress");
-            Company company = new Company();
-            company.setName("test");
-            company.setFounded(LocalDate.now());
-            company.setDeveloped(games);
+//            ArrayList<String> games = new ArrayList<>();
+//            games.add("csgo");
+//            games.add("team fortress");
+//            Company company = new Company();
+//            company.setName("test");
+//            company.setFounded(LocalDate.now());
+//            company.setDeveloped(games);
 
             // set company and game
-            game.setCompany(company);
-            company.setGame(game);
+            //game.setCompany(company);
+            //company.setGame(game);
 
             gameRepository.save(game);
             return game;

@@ -1,12 +1,13 @@
 package com.rickvoermans.microservices.games.api.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "companies")
-public class Company {
+public class Company implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
