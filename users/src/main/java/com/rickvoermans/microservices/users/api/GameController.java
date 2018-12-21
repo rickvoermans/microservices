@@ -22,7 +22,7 @@ public class GameController {
 
     @PostMapping
     public void addToFavourites(@RequestBody GameDto gameDto) throws Exception {
-        boolean inFavourites = gameRepository.findGameInList(gameDto.getUserId(), gameDto.getGameId()).isPresent();
+        boolean inFavourites = true; //gameRepository.findGameInList(gameDto.getUserId(), gameDto.getGameId()).isPresent();
 
         if (!inFavourites) {
             Game game = new Game();

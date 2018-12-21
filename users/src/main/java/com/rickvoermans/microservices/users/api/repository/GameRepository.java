@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface GameRepository extends CrudRepository<Game, Long> {
 
-    Optional<Game> findGameInList(Long userId, Long gameId);
+    // werkt nie?????
+    //Optional<Game> findGameInList(Long userId, Long gameId);
 
 }
